@@ -1,0 +1,7 @@
+﻿  MyForm.cpp
+d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(311): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(258): warning C4101: recvbuf: неиспользованная локальная переменная
+d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(334): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
+  Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Debug\Cli_WINforms.exe
+  Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Debug\Cli_WINforms.pdb (Full PDB)
