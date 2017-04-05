@@ -1,4 +1,5 @@
 #pragma once
+#include "pass.h"
 #define WIN32_LEAN_AND_MEAN
 #include<string>
 #include <windows.h>
@@ -13,7 +14,8 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 #define DEFAULT_BUFLEN 1024
-#define DEFAULT_PORT "7770"
+#define DEFAULT_PORT "7771"
+
 
 
 namespace Cli_WINforms {
@@ -27,11 +29,18 @@ namespace Cli_WINforms {
 	using namespace System::Threading;
 	
 
-
+	extern char t;
 	SOCKET ConnectSocket = INVALID_SOCKET;
+
+	
+	char ip_address[] = "127.0.0.1";
+	char port[] = "7770";
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+		String^ name = "";
+		
+		
 	public:
 		MyForm(void)
 		{
@@ -39,6 +48,11 @@ namespace Cli_WINforms {
 			richTextBox1->Enabled = 0;
 			richTextBox2->Enabled = 1;
 			button1->Enabled = 0;
+
+			
+
+			Cli_WINforms::pass farm;
+			farm.ShowDialog();
 			
 		}
 
@@ -63,6 +77,8 @@ namespace Cli_WINforms {
 	private: System::Windows::Forms::RichTextBox^  richTextBox4;
 	private: System::Windows::Forms::Label^  label5;
 
+
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -76,6 +92,7 @@ namespace Cli_WINforms {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
@@ -217,8 +234,11 @@ namespace Cli_WINforms {
 			this->Controls->Add(this->richTextBox2);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Bolshakov\'s сообщения";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
@@ -230,34 +250,21 @@ namespace Cli_WINforms {
 
 private: System::Void richTextBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 }		 
-		 
-		 String^ name = "5";
-
-
 		 void recvmes() {
 			 char buffer[1024];
-			 for (int i = 0; i < 1024; i++) {
-				 buffer[i] = 0;
-			 }
-			 for (int k = 0; k < 1; k++) {
+			 for (int i = 0; i < 1024; i++) buffer[i] = 0;
+
 				 recv(ConnectSocket, buffer, 1024, 0);
 				 String^ recvm = "";
-				 for (int i = 0; i < 1024; i++) {
-					 if (buffer[i] != Convert::ToChar(3)) recvm += Convert::ToChar(buffer[i]);
-					 else break;
-				 }
-				 if (recvm != "") richTextBox2->AppendText(recvm);
-			 }
+				 for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);
+				 richTextBox2->AppendText(recvm);
 		 }
 public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		WSADATA wsaData;
 		//SOCKET ConnectSocket = INVALID_SOCKET;
 		struct addrinfo *result = NULL, *ptr = NULL, hints;
-		char *sendbuf = "123456";
-		char recvbuf[DEFAULT_BUFLEN];
 		int iResult;
-		int recvbuflen = DEFAULT_BUFLEN;
 
 		iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
 
@@ -266,7 +273,7 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_protocol = IPPROTO_TCP;
 
-		iResult = getaddrinfo("127.0.0.1", DEFAULT_PORT, &hints, &result);
+		iResult = getaddrinfo(ip_address, port, &hints, &result);
 
 		for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 			ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
@@ -281,64 +288,86 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		}
 		
 		freeaddrinfo(result);
-		name = richTextBox3->Text;
+
+
+		name = richTextBox3->Text;//получение ника
 		richTextBox3->Text = "";
 		richTextBox3->Enabled = 0;
-		char buffer[10];
-		for (int i = 0; i < 11; i++) {
-			buffer[i] = 0;
-		}
+
+
+		char buffer[1024];
+		for (int i = 0; i < 11; i++) buffer[i] = 0;
+
 		recv(ConnectSocket, buffer, 10, 0);
+
 		String^ s = "";
-		for (int i = 0; i < 10; i++) {
-			s += Convert::ToChar(buffer[i]);
-		}
-		richTextBox2->AppendText(s);
-		richTextBox2->AppendText("\n");
+		for (int i = 0; i < 10; i++) s += Convert::ToChar(buffer[i]);
+		richTextBox2->AppendText(s+"\n"); //message connecting...
+
 		button2->Enabled = 0;
 		button1->Enabled = 1;
 		richTextBox1->Enabled = 1;
-		char b[1024];
+
 		String^ key = "";
 		key += richTextBox4->Text;
 		richTextBox4->Text = "";
-		richTextBox4->Enabled = 0;
+		richTextBox4->Enabled = 0; //get key
+
+		for (int i = 0; i < 1024; i++) buffer[i] = 0;
 		
-		for (int i = 0; i < 1024; i++) {
-			b[i] = 0;
-		}
-		for (int i = 0; i < key->Length; i++) {
-			b[i] = key[i];
-		}
-		send(ConnectSocket, b, 1024, 0);
+		for (int i = 0; i < key->Length; i++) buffer[i] = key[i];
+		send(ConnectSocket, buffer, 1024, 0); //send key to check
+
 		richTextBox2->AppendText("key check...\n");
-		for (int i = 0; i < 1024; i++) b[i] = 0;
-		recv(ConnectSocket, b, 1024, 0);
+
+		for (int i = 0; i < 1024; i++) buffer[i] = 0;
+		recv(ConnectSocket, buffer, 1024, 0);
 		s = "";
-		for (int i = 0; i < 11; i++) {
-			s += Convert::ToChar(b[i]);
+		for (int i = 0; i < 11; i++) s += Convert::ToChar(buffer[i]);//get result check key
+
+		if (s == "wrong  key ") {
+			richTextBox1->Enabled = 0;
+			button1->Enabled = 0;
+			richTextBox2->AppendText(s+Convert::ToChar("\n"));
+			richTextBox2->AppendText("Please restart chat");
 		}
-		richTextBox2->AppendText(s);	
+		else richTextBox2->AppendText(s+ Convert::ToChar("\n"));
 }
 
 public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ mes = name+": ";
-	mes += richTextBox1->Text;
-	mes += Convert::ToChar('\n');
-	richTextBox1->Text = "";
-	char buf[1024];
-	for (int i = 0; i < 1024; i++) {
-		buf[i] = 0;
+	String^ send_mes = name+": ";
+
+	if ((richTextBox1->Text) != "") {
+		send_mes += richTextBox1->Text;
+		send_mes += "\n";
+		richTextBox1->Text = "";
+
+		char buffer[1024];
+		for (int i = 0; i < 1024; i++) buffer[i] = 0;
+
+		for (int i = 0; i < send_mes->Length; i++) buffer[i] = send_mes[i];
+		send(ConnectSocket, buffer, 1024, 0);
+		recvmes();
 	}
-	for (int i = 0; i < mes->Length; i++) {
-		buf[i] = mes[i];
-	}
-	send(ConnectSocket, buf, 1024, 0);
-	recvmes();
-	
+	else richTextBox2->AppendText("You can't send blank message\n");	
 }
 public: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
+
+	/*	public:
+			 event EventHandler^ Enter {
+				 void add(EventHandler^ value);
+				 void remove(EventHandler^ value);
+			 }
+				 void textBox1_Enter(Object^ sender, System::EventArgs^ e)
+			{
+			richTextBox2->AppendText("hello");
+			}
+
+				void textBox1_Leave(Object^ sender, System::EventArgs^ e)
+				{
+					
+				}*/
 };
 	
 }

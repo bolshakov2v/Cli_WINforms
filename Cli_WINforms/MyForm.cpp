@@ -1,4 +1,5 @@
 #include "MyForm.h"
+#include "pass.h"
 #define WIN32_LEAN_AND_MEAN
 
 #include <windows.h>
@@ -14,13 +15,11 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 
-#define DEFAULT_BUFLEN 1024
-#define DEFAULT_PORT "7770"
 using namespace System;
 using namespace System::Windows::Forms;
 
 
-[STAThreadAttribute]
+[STAThread]
 
 
 void Main(array<String^>^ args)
@@ -30,8 +29,6 @@ void Main(array<String^>^ args)
 
 	Cli_WINforms::MyForm form;
 	Application::Run(%form);
-
-	
 }
 
 
