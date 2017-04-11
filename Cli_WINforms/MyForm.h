@@ -35,6 +35,11 @@ namespace Cli_WINforms {
 	
 	char ip_address[] = "127.0.0.1";
 	char port[] = "7770";
+
+	void rss() {
+		recvmes();
+		
+	}
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -332,6 +337,8 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 			richTextBox2->AppendText("Please restart chat");
 		}
 		else richTextBox2->AppendText(s+ Convert::ToChar("\n"));
+
+		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)rss, NULL, NULL, NULL);
 }
 
 public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
