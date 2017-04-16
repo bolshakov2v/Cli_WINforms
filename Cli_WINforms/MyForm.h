@@ -36,10 +36,7 @@ namespace Cli_WINforms {
 	char ip_address[] = "127.0.0.1";
 	char port[] = "7770";
 
-	void rss() {
-		recvmes();
-		
-	}
+
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -254,16 +251,29 @@ namespace Cli_WINforms {
 	
 
 private: System::Void richTextBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}		 
-		 void recvmes() {
-			 char buffer[1024];
-			 for (int i = 0; i < 1024; i++) buffer[i] = 0;
+}
+System::Void rss() {
+	for (;; Sleep(75)) {
+		char buffer[1024];
+		for (int i = 0; i < 1024; i++) buffer[i] = 0;
+
+		recv(ConnectSocket, buffer, 1024, 0);
+		String^ recvm = "";
+		for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);
+		richTextBox2->Invoke(gcnew Action<String^>(this, &MyForm::recvmes), recvm);
+	}
+}
+System::Void recvmes(String^ recvm) {
+			 /*for (int j = 0; j < 1; j++) {
+				 char buffer[1024];
+				 for (int i = 0; i < 1024; i++) buffer[i] = 0;
 
 				 recv(ConnectSocket, buffer, 1024, 0);
 				 String^ recvm = "";
-				 for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);
+				 for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);*/
 				 richTextBox2->AppendText(recvm);
-		 }
+			 }
+		 
 public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		WSADATA wsaData;
@@ -338,7 +348,9 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		}
 		else richTextBox2->AppendText(s+ Convert::ToChar("\n"));
 
-		CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)rss, NULL, NULL, NULL);
+		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::rss);
+		Thread^ newThread = gcnew Thread(threadDelegate);
+		newThread->Start();
 }
 
 public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -354,7 +366,7 @@ public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  
 
 		for (int i = 0; i < send_mes->Length; i++) buffer[i] = send_mes[i];
 		send(ConnectSocket, buffer, 1024, 0);
-		recvmes();
+		//recvmes();
 	}
 	else richTextBox2->AppendText("You can't send blank message\n");	
 }

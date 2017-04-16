@@ -1,5 +1,5 @@
 ﻿  MyForm.cpp
-d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(323): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(355): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(333): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(367): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
   Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Debug\Cli_WINforms.exe
   Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Debug\Cli_WINforms.pdb (Full PDB)
