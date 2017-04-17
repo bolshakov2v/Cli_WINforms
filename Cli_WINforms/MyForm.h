@@ -14,7 +14,7 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 #define DEFAULT_BUFLEN 1024
-#define DEFAULT_PORT "7771"
+#define DEFAULT_PORT "631"
 
 
 
@@ -29,12 +29,12 @@ namespace Cli_WINforms {
 	using namespace System::Threading;
 	
 
-	extern char t;
+	//extern char t;
 	SOCKET ConnectSocket = INVALID_SOCKET;
-
+	char str1[] = "ololo";
 	
-	char ip_address[] = "127.0.0.1";
-	char port[] = "7770";
+	//char ip_address[] = "127.0.0.1";
+	char port[] = "631";
 
 
 	
@@ -53,8 +53,9 @@ namespace Cli_WINforms {
 
 			
 
-			Cli_WINforms::pass farm;
-			farm.ShowDialog();
+			//Cli_WINforms::pass farm;
+			//farm.ShowDialog();
+
 			
 		}
 
@@ -78,6 +79,9 @@ namespace Cli_WINforms {
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::RichTextBox^  richTextBox4;
 	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::RichTextBox^  richTextBox5;
+	private: System::Windows::Forms::Label^  label6;
+
 
 
 
@@ -106,6 +110,8 @@ namespace Cli_WINforms {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->richTextBox4 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->richTextBox5 = (gcnew System::Windows::Forms::RichTextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -155,7 +161,7 @@ namespace Cli_WINforms {
 			this->richTextBox3->Location = System::Drawing::Point(18, 117);
 			this->richTextBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(316, 33);
+			this->richTextBox3->Size = System::Drawing::Size(191, 33);
 			this->richTextBox3->TabIndex = 4;
 			this->richTextBox3->Text = L"";
 			// 
@@ -203,28 +209,49 @@ namespace Cli_WINforms {
 			// 
 			// richTextBox4
 			// 
-			this->richTextBox4->Location = System::Drawing::Point(345, 117);
+			this->richTextBox4->Location = System::Drawing::Point(217, 117);
 			this->richTextBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->richTextBox4->Name = L"richTextBox4";
-			this->richTextBox4->Size = System::Drawing::Size(316, 33);
+			this->richTextBox4->Size = System::Drawing::Size(200, 33);
 			this->richTextBox4->TabIndex = 9;
 			this->richTextBox4->Text = L"";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(340, 88);
+			this->label5->Location = System::Drawing::Point(225, 92);
 			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(119, 20);
 			this->label5->TabIndex = 10;
 			this->label5->Text = L"Введите ключ";
 			// 
+			// richTextBox5
+			// 
+			this->richTextBox5->Location = System::Drawing::Point(425, 117);
+			this->richTextBox5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox5->Name = L"richTextBox5";
+			this->richTextBox5->Size = System::Drawing::Size(200, 33);
+			this->richTextBox5->TabIndex = 11;
+			this->richTextBox5->Text = L"";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(433, 92);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(153, 20);
+			this->label6->TabIndex = 12;
+			this->label6->Text = L"Введите ip address";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(984, 700);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->richTextBox5);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->richTextBox4);
 			this->Controls->Add(this->label4);
@@ -264,20 +291,19 @@ System::Void rss() {
 	}
 }
 System::Void recvmes(String^ recvm) {
-			 /*for (int j = 0; j < 1; j++) {
-				 char buffer[1024];
-				 for (int i = 0; i < 1024; i++) buffer[i] = 0;
 
-				 recv(ConnectSocket, buffer, 1024, 0);
-				 String^ recvm = "";
-				 for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);*/
-				 richTextBox2->AppendText(recvm);
-			 }
+	richTextBox2->AppendText(recvm);
+}
 		 
 public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	char dd[] = "";
+	String^ ip = "";
+	for (int i = 0; i < ip->Length; i++) dd[i] = ip[i];
+	richTextBox5->Text = "";
+	richTextBox5->Enabled = 0;
 
 		WSADATA wsaData;
-		//SOCKET ConnectSocket = INVALID_SOCKET;
+
 		struct addrinfo *result = NULL, *ptr = NULL, hints;
 		int iResult;
 
@@ -288,12 +314,14 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_protocol = IPPROTO_TCP;
 
-		iResult = getaddrinfo(ip_address, port, &hints, &result);
+		iResult = getaddrinfo(dd, port, &hints, &result);
+		richTextBox2->AppendText("getaddrinfo "+Convert::ToString(iResult)+"\n");
 
 		for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 			ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
 
 			iResult = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+			richTextBox2->AppendText("Connect "+Convert::ToString(iResult)+"\n");
 			if (iResult == SOCKET_ERROR) {
 				closesocket(ConnectSocket);
 				ConnectSocket = INVALID_SOCKET;
@@ -351,14 +379,15 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::rss);
 		Thread^ newThread = gcnew Thread(threadDelegate);
 		newThread->Start();
+		
 }
-
+		DateTime tdnow = DateTime::Now;
 public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ send_mes = name+": ";
+	String^ time = Convert::ToString(tdnow.Now.Hour + ":"+tdnow.Now.Minute+":"+tdnow.Now.Second+"  ");
+	String^ send_mes = time + name+": ";
 
 	if ((richTextBox1->Text) != "") {
-		send_mes += richTextBox1->Text;
-		send_mes += "\n";
+		send_mes += richTextBox1->Text+"\n";
 		richTextBox1->Text = "";
 
 		char buffer[1024];
@@ -366,27 +395,13 @@ public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  
 
 		for (int i = 0; i < send_mes->Length; i++) buffer[i] = send_mes[i];
 		send(ConnectSocket, buffer, 1024, 0);
-		//recvmes();
+	
 	}
 	else richTextBox2->AppendText("You can't send blank message\n");	
 }
 public: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 
-	/*	public:
-			 event EventHandler^ Enter {
-				 void add(EventHandler^ value);
-				 void remove(EventHandler^ value);
-			 }
-				 void textBox1_Enter(Object^ sender, System::EventArgs^ e)
-			{
-			richTextBox2->AppendText("hello");
-			}
-
-				void textBox1_Leave(Object^ sender, System::EventArgs^ e)
-				{
-					
-				}*/
 };
 	
 }

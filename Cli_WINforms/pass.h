@@ -13,12 +13,14 @@ namespace Cli_WINforms {
 	/// <summary>
 	/// Сводка для pass
 	/// </summary>
+
 	
 	public ref class pass : public System::Windows::Forms::Form
 	{
 	public:
 
-		char t = 'h';
+		//String^ str1 = "";
+		
 		pass(void)
 		{
 			InitializeComponent();
@@ -215,6 +217,9 @@ namespace Cli_WINforms {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		
+	
+		
 		
 	}
 	private: System::Void pass_Load(System::Object^  sender, System::EventArgs^  e) {
