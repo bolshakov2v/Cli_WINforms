@@ -1,0 +1,22 @@
+
+Обрабатываем D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\x64\Release\Online Chat Bolshakov's сообщения.ci 01.05.2017 22:31:02
+Лог-файл: D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\x64\Release\Online Chat Bolshakov's сообщения.log 
+Генерация исходников... 
+Компиляции Gentee исходников... 
+Создание файла установки: c:\setups\setup.exe 
+Добавление temporary файла(ов) к EXE 
+C:\Users\vladimir\AppData\Local\Temp\gentee01\russian.lng 01.05.2017 22:31:02 3573  45.56%
+C:\Program Files (x86)\CreateInstall Free\res\logo\default - 1.bmp 05.11.2002 11:52:24 7308  52.55%
+C:\Program Files (x86)\CreateInstall Free\res\leftimg\install\install.bmp 30.04.2002 12:07:06 9920  23.57%
+Получение списка файлов 
+Упаковка файлов... 
+================================ 
+C:\Users\vladimir\Desktop\chat_logo-01.ico 05.04.2017 10:35:20 370070  8.14%
+\\Mainframe\c\Users\bolsh\Desktop\Cli_WINforms\x64\Release\Cli_WINforms.exe 01.05.2017 22:23:34 863744  8.26%
+D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\NDP461-KB3102436-x86-x64-AllOS-ENU.exe 17.04.2017 18:42:19 67681000  99.88%
+D:\vc_redist.x64.exe 22.04.2017 18:34:33 14572000  95.61%
+================================ 
+Все файлы: 4 [ 81530KB => 79724KB ] 
+Запуск INSTALL PATH\NDP461-KB3102436-x86-x64-AllOS-ENU.exe 
+Размер файла c:\setups\setup.exe: 79820 KB 
+Успешное окончание 01.05.2017 22:31:49

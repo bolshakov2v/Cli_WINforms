@@ -1,0 +1,123 @@
+﻿<project version = 9 civer = 8.0.1 winver = "2.12/6.2.9200" >
+   <autorun >1</>
+   <autoclose >0</>
+   <compname >Bolshakov courp ink</>
+   <produrl >bolshakov.online</>
+   <ver ></>
+   <supurl ></>
+   <updurl ></>
+   <dlgfont >verdana</>
+   <headlogo >default - 1</>
+   <dlgfontsize >s9</>
+   <output >c:\setups</>
+   <exename >setup.exe</>
+   <beffile ></>
+   <aftfile >INSTALL PATH\NDP461-KB3102436-x86-x64-AllOS-ENU.exe</>
+   <uninclude >0</>
+   <lang >russian</>
+   <addlang ></>
+   <selfextr >1</>
+   <instpath ></>
+   <voltype >nolimit</>
+   <volsize ></>
+   <volpattern >disk%i.pak</>
+   <password ></>
+   <progname >Online Chat Bolshakov's сообщения</>
+   <appname ></>
+   <bl ></>
+   <blurl ></>
+   <unpath >inst</>
+   <unexe >uninstall.exe</>
+   <unlog >uninstall.ini</>
+   <installroot ></>
+   <uninstallroot ></>
+   <icofile >default - 1</>
+   <noadmin >0</>
+   <comptype >default</>
+   <ratio >r5</>
+   <solid >1</>
+   <desc ></>
+   <srclist >
+      <rows >
+         <_ >
+            <filename >D:\vc_redist.x64.exe</>
+            <recurse >1</>
+            <path >inst</>
+            <custpath ></>
+            <ifexist >overnewer</>
+         </>
+         <_ >
+            <filename >D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\NDP461-KB3102436-x86-x64-AllOS-ENU.exe</>
+            <recurse >1</>
+            <path >inst</>
+            <custpath ></>
+            <ifexist >overnewer</>
+         </>
+         <_ >
+            <filename >D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\x64\Release\Cli_WINforms.exe</>
+            <recurse >1</>
+            <path >inst</>
+            <custpath ></>
+            <ifexist >overnewer</>
+         </>
+      </>
+   </>
+   <path >inst</>
+   <custpath ></>
+   <ifexist >over</>
+   <if ></>
+   <varlist >
+      <rows ></>
+   </>
+   <shpath >prog</>
+   <shfile ></>
+   <file ></>
+   <cmdline ></>
+   <comment ></>
+   <icon ></>
+   <work >inst</>
+   <defwork ></>
+   <runas >norm</>
+   <root >curuser</>
+   <subkey ></>
+   <reglist >
+      <rows ></>
+   </>
+   <shfolder ></>
+   <silentpar >-silent</>
+   <ignnotfound >0</>
+   <srcfolder ></>
+   <exclude ></>
+   <licfile ></>
+   <readfile ></>
+   <leftimg >install</>
+   <caption ></>
+   <iswel >1</>
+   <isfin >1</>
+   <enforce >0</>
+   <savepath >0</>
+   <autoprog >1</>
+   <opengroup >0</>
+   <shlist >
+      <rows >
+         <_ >
+            <shpath >desk</>
+            <shfile >StartChat</>
+            <path >inst</>
+            <file >Cli_WINforms.exe</>
+            <cmdline ></>
+            <icon ></>
+            <work >inst</>
+            <defwork ></>
+         </>
+      </>
+   </>
+   <unicon >uninstall</>
+   <unsh >1</>
+   <unaddrem >1</>
+   <unname ></>
+   <ifile ></>
+   <unleftimg >uninstall - 1</>
+   <uncaption ></>
+   <isunfin >1</>
+</>

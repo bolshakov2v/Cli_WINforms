@@ -1,1 +1,6 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v141 (Platform Toolset = 'v141') cannot be found. To build using the v141 build tools, please install v141 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
+﻿  MyForm.cpp
+c:\users\bolsh\desktop\чат 28.05.17 мой\cli_winforms\cli_winforms\MyForm.h(293): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+c:\users\bolsh\desktop\чат 28.05.17 мой\cli_winforms\cli_winforms\MyForm.h(350): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+c:\users\bolsh\desktop\чат 28.05.17 мой\cli_winforms\cli_winforms\MyForm.h(383): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+  Cli_WINforms.vcxproj -> C:\Users\bolsh\Desktop\чат 28.05.17 мой\Cli_WINforms\x64\Release\Cli_WINforms.exe
+  Cli_WINforms.vcxproj -> C:\Users\bolsh\Desktop\чат 28.05.17 мой\Cli_WINforms\x64\Release\Cli_WINforms.pdb (Full PDB)

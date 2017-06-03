@@ -1,10 +1,10 @@
 #pragma once
-#include "pass.h"
 #define WIN32_LEAN_AND_MEAN
 #include<string>
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <WinBase.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include<iostream>
@@ -14,7 +14,7 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 #define DEFAULT_BUFLEN 1024
-#define DEFAULT_PORT "631"
+
 
 
 
@@ -29,20 +29,15 @@ namespace Cli_WINforms {
 	using namespace System::Threading;
 	
 
-	//extern char t;
 	SOCKET ConnectSocket = INVALID_SOCKET;
-	char str1[] = "ololo";
-	
-	//char ip_address[] = "127.0.0.1";
-	char port[] = "631";
 
+	char port[] = "631";
 
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 		String^ name = "";
-		
-		
+			
 	public:
 		MyForm(void)
 		{
@@ -50,12 +45,6 @@ namespace Cli_WINforms {
 			richTextBox1->Enabled = 0;
 			richTextBox2->Enabled = 1;
 			button1->Enabled = 0;
-
-			
-
-			//Cli_WINforms::pass farm;
-			//farm.ShowDialog();
-
 			
 		}
 
@@ -117,40 +106,36 @@ namespace Cli_WINforms {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(14, 551);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(9, 358);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(164, 20);
+			this->label1->Size = System::Drawing::Size(109, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Введите сообщение";
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(18, 575);
-			this->richTextBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox1->Location = System::Drawing::Point(12, 374);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(754, 104);
+			this->richTextBox1->Size = System::Drawing::Size(384, 69);
 			this->richTextBox1->TabIndex = 1;
 			this->richTextBox1->Text = L"";
 			// 
 			// richTextBox2
 			// 
-			this->richTextBox2->Location = System::Drawing::Point(18, 172);
-			this->richTextBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox2->Location = System::Drawing::Point(12, 112);
 			this->richTextBox2->Name = L"richTextBox2";
 			this->richTextBox2->ReadOnly = true;
 			this->richTextBox2->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::Vertical;
-			this->richTextBox2->Size = System::Drawing::Size(952, 356);
+			this->richTextBox2->Size = System::Drawing::Size(504, 233);
 			this->richTextBox2->TabIndex = 2;
 			this->richTextBox2->Text = L"";
 			this->richTextBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::richTextBox2_TextChanged);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(786, 591);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->button1->Location = System::Drawing::Point(413, 384);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(186, 91);
+			this->button1->Size = System::Drawing::Size(103, 59);
 			this->button1->TabIndex = 3;
 			this->button1->Text = L"Отправить";
 			this->button1->UseVisualStyleBackColor = true;
@@ -158,19 +143,17 @@ namespace Cli_WINforms {
 			// 
 			// richTextBox3
 			// 
-			this->richTextBox3->Location = System::Drawing::Point(18, 117);
-			this->richTextBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox3->Location = System::Drawing::Point(12, 76);
 			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(191, 33);
+			this->richTextBox3->Size = System::Drawing::Size(127, 23);
 			this->richTextBox3->TabIndex = 4;
 			this->richTextBox3->Text = L"";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(688, 98);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->button2->Location = System::Drawing::Point(413, 64);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(135, 65);
+			this->button2->Size = System::Drawing::Size(103, 42);
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Войти";
 			this->button2->UseVisualStyleBackColor = true;
@@ -179,10 +162,9 @@ namespace Cli_WINforms {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(18, 88);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(12, 57);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(106, 20);
+			this->label2->Size = System::Drawing::Size(70, 13);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Введите ник";
 			// 
@@ -190,66 +172,62 @@ namespace Cli_WINforms {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->ForeColor = System::Drawing::Color::Red;
-			this->label3->Location = System::Drawing::Point(22, 20);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(15, 13);
 			this->label3->Name = L"label3";
 			this->label3->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->label3->Size = System::Drawing::Size(261, 20);
+			this->label3->Size = System::Drawing::Size(174, 13);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Добро пожаловать в онлайн чат!";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(640, 60);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(427, 39);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(0, 20);
+			this->label4->Size = System::Drawing::Size(0, 13);
 			this->label4->TabIndex = 8;
 			// 
 			// richTextBox4
 			// 
-			this->richTextBox4->Location = System::Drawing::Point(217, 117);
-			this->richTextBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox4->Location = System::Drawing::Point(143, 76);
 			this->richTextBox4->Name = L"richTextBox4";
-			this->richTextBox4->Size = System::Drawing::Size(200, 33);
+			this->richTextBox4->Size = System::Drawing::Size(125, 23);
 			this->richTextBox4->TabIndex = 9;
 			this->richTextBox4->Text = L"";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(225, 92);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(140, 57);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(119, 20);
+			this->label5->Size = System::Drawing::Size(77, 13);
 			this->label5->TabIndex = 10;
 			this->label5->Text = L"Введите ключ";
 			// 
 			// richTextBox5
 			// 
-			this->richTextBox5->Location = System::Drawing::Point(425, 117);
-			this->richTextBox5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->richTextBox5->Location = System::Drawing::Point(272, 76);
 			this->richTextBox5->Name = L"richTextBox5";
-			this->richTextBox5->Size = System::Drawing::Size(200, 33);
+			this->richTextBox5->Size = System::Drawing::Size(125, 23);
 			this->richTextBox5->TabIndex = 11;
 			this->richTextBox5->Text = L"";
+			this->richTextBox5->TextChanged += gcnew System::EventHandler(this, &MyForm::richTextBox5_TextChanged);
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(433, 92);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Location = System::Drawing::Point(269, 57);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(153, 20);
+			this->label6->Size = System::Drawing::Size(127, 13);
 			this->label6->TabIndex = 12;
-			this->label6->Text = L"Введите ip address";
+			this->label6->Text = L"Введите адрес сервера";
+			this->label6->Click += gcnew System::EventHandler(this, &MyForm::label6_Click);
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(984, 700);
+			this->ClientSize = System::Drawing::Size(531, 455);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->richTextBox5);
 			this->Controls->Add(this->label5);
@@ -265,7 +243,6 @@ namespace Cli_WINforms {
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Bolshakov\'s сообщения";
@@ -278,32 +255,46 @@ namespace Cli_WINforms {
 	
 
 private: System::Void richTextBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
+}		 
 System::Void rss() {
-	for (;; Sleep(75)) {
-		char buffer[1024];
-		for (int i = 0; i < 1024; i++) buffer[i] = 0;
+			 for (;; Sleep(75)) {
+				 checkDebug();
+				 char buffer[1024];
+				 for (int i = 0; i < 1024; i++) buffer[i] = 0;
 
-		recv(ConnectSocket, buffer, 1024, 0);
-		String^ recvm = "";
-		for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);
-		richTextBox2->Invoke(gcnew Action<String^>(this, &MyForm::recvmes), recvm);
-	}
-}
+				 recv(ConnectSocket, buffer, 1024, 0);
+				 String^ recvm = "";
+				 for (int i = 0; i < 1024; i++) recvm += Convert::ToChar(buffer[i]);
+				 richTextBox2->Invoke(gcnew Action<String^>(this, &MyForm::recvmes), recvm);
+			 }
+		 }
 System::Void recvmes(String^ recvm) {
 
-	richTextBox2->AppendText(recvm);
+			 richTextBox2->AppendText(recvm);
+		 }
+ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::rss);
+Thread^ newThread = gcnew Thread(threadDelegate);
+
+System::Void checkDebug() {
+	if (IsDebuggerPresent()) {
+		Application::Exit();
+	}
 }
-		 
 public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	char dd[] = "";
-	String^ ip = "";
-	for (int i = 0; i < ip->Length; i++) dd[i] = ip[i];
-	richTextBox5->Text = "";
-	richTextBox5->Enabled = 0;
+
+	checkDebug();
+	if (richTextBox3->Text == "" || richTextBox4->Text == "" || richTextBox5->Text == "") {
+		richTextBox2->AppendText("Введенные данные не верны!\n");
+	}
+	else {
+		String^ ip = richTextBox5->Text;
+		char dd[100];
+		for (int i = 0; i < 100; i++) dd[i] = 0;
+		for (int i = 0; i < ip->Length; i++) dd[i] = ip[i];
+		richTextBox5->Text = "";
+		richTextBox5->Enabled = 0;
 
 		WSADATA wsaData;
-
 		struct addrinfo *result = NULL, *ptr = NULL, hints;
 		int iResult;
 
@@ -315,13 +306,11 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		hints.ai_protocol = IPPROTO_TCP;
 
 		iResult = getaddrinfo(dd, port, &hints, &result);
-		richTextBox2->AppendText("getaddrinfo "+Convert::ToString(iResult)+"\n");
 
 		for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 			ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
 
 			iResult = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
-			richTextBox2->AppendText("Connect "+Convert::ToString(iResult)+"\n");
 			if (iResult == SOCKET_ERROR) {
 				closesocket(ConnectSocket);
 				ConnectSocket = INVALID_SOCKET;
@@ -329,7 +318,7 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 			}
 			break;
 		}
-		
+
 		freeaddrinfo(result);
 
 
@@ -345,7 +334,7 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 
 		String^ s = "";
 		for (int i = 0; i < 10; i++) s += Convert::ToChar(buffer[i]);
-		richTextBox2->AppendText(s+"\n"); //message connecting...
+		richTextBox2->AppendText(s + "\n"); //message connecting...
 
 		button2->Enabled = 0;
 		button1->Enabled = 1;
@@ -357,11 +346,9 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		richTextBox4->Enabled = 0; //get key
 
 		for (int i = 0; i < 1024; i++) buffer[i] = 0;
-		
+
 		for (int i = 0; i < key->Length; i++) buffer[i] = key[i];
 		send(ConnectSocket, buffer, 1024, 0); //send key to check
-
-		richTextBox2->AppendText("key check...\n");
 
 		for (int i = 0; i < 1024; i++) buffer[i] = 0;
 		recv(ConnectSocket, buffer, 1024, 0);
@@ -371,23 +358,23 @@ public: System::Void button2_Click(System::Object^  sender, System::EventArgs^  
 		if (s == "wrong  key ") {
 			richTextBox1->Enabled = 0;
 			button1->Enabled = 0;
-			richTextBox2->AppendText(s+Convert::ToChar("\n"));
+			richTextBox2->AppendText(s + Convert::ToChar("\n"));
 			richTextBox2->AppendText("Please restart chat");
 		}
-		else richTextBox2->AppendText(s+ Convert::ToChar("\n"));
+		else richTextBox2->AppendText(s + Convert::ToChar("\n"));
 
-		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::rss);
-		Thread^ newThread = gcnew Thread(threadDelegate);
+
 		newThread->Start();
-		
+	}
 }
 		DateTime tdnow = DateTime::Now;
 public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ time = Convert::ToString(tdnow.Now.Hour + ":"+tdnow.Now.Minute+":"+tdnow.Now.Second+"  ");
-	String^ send_mes = time + name+": ";
+	String^ time = Convert::ToString(tdnow.Now.Hour + ":" + tdnow.Now.Minute + ":" + tdnow.Now.Second + "  ");
+	String^ send_mes = time + name + ": ";
 
 	if ((richTextBox1->Text) != "") {
-		send_mes += richTextBox1->Text+"\n";
+		send_mes += richTextBox1->Text;
+		send_mes += "\n";
 		richTextBox1->Text = "";
 
 		char buffer[1024];
@@ -397,9 +384,15 @@ public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  
 		send(ConnectSocket, buffer, 1024, 0);
 	
 	}
-	else richTextBox2->AppendText("You can't send blank message\n");	
+	else richTextBox2->AppendText("You can't send blank message\n");
+	
 }
 public: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+
+private: System::Void richTextBox5_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 
 };

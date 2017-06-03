@@ -23,6 +23,8 @@ Class Cli_WINforms.pass: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
 Class Cli_WINforms.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.DateTime tdnow : Public
   Methods:
     button2_Click(Object, EventArgs): PrivateScope, Public, HideBySig
     button1_Click(Object, EventArgs): PrivateScope, Public, HideBySig

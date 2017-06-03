@@ -1,6 +1,6 @@
-﻿  MyForm.cpp
-d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(301): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(361): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-d:\owncloud\documents\учебные документы\visual studio 2015\projects\cli_winforms\cli_winforms\MyForm.h(396): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-  Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.exe
-  Cli_WINforms.vcxproj -> D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.pdb (Full PDB)
+﻿  Microsoft (R) Incremental Linker Version 14.00.24215.1
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  "/OUT:D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.exe" /INCREMENTAL:NO /ALLOWBIND:NO /ASSEMBLYRESOURCE:Release\Cli_WINforms.MyForm.resources /ASSEMBLYRESOURCE:Release\Cli_WINforms.pass.resources /MANIFEST "/MANIFESTUAC:level='asInvoker' uiAccess='false'" /manifest:embed "/manifestinput:C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG "/PDB:D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 "/ENTRY:Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT "/IMPLIB:D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.lib" /MACHINE:X86 /SAFESEH Release\MyForm.obj 
+  "Release\.NETFramework,Version=v4.6.1.AssemblyAttributes.obj" 
+LINK : fatal error LNK1104: не удается открыть файл "D:\ownCloud\Documents\Учебные документы\visual studio 2015\Projects\Cli_WINforms\Release\Cli_WINforms.exe"
